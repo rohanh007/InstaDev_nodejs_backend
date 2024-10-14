@@ -22,7 +22,7 @@ router.post('/api/loginauth',logincontroller().loginauth);
 router.post('/api/signauth',signcontroller().Create);
 
 // create 
-router.post('/api/createpost',createpost().post);
+router.post('/api/createpost',authjwt,createpost().post);
 router.post('/api/comment',createcomment().comment);
 
 // Get posts 
@@ -43,7 +43,7 @@ router.post('/api/friendrequest/send',sendFriendRequest().send);
 router.post('/api/friendrequest/accept',acceptFriendRequest().accept);
 router.post('/api/friendrequest/reject',rejectFriendRequest().reject);
 
-router.post('/api/like',likePost().like);
-router.delete('/api/unlike',unlikePost().unlike);
+router.post('/api/like',authjwt,likePost().like);
+router.delete('/api/unlike',authjwt,unlikePost().unlike);
 
 module.exports = router;  
