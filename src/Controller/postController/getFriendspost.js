@@ -5,8 +5,8 @@ function getFriendPost(){
     return {
         async getfriendpost(req,res){
             try {
-              const currentUserId = req.user._id; // Assuming middleware provides authenticated user ID
-          
+              const currentUserId = req.user.id; 
+              console.log(currentUserId);
               const currentUser = await User.findById(currentUserId).populate('friends');
           
               const friendIds = currentUser.friends.map(friend => friend._id);

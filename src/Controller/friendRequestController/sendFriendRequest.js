@@ -14,7 +14,7 @@ function sendFriendRequest(){
                 }
 
                 const existrequest=await friendrequest.findOne({sender:sender ,receive:receiver ,status:"pending"});
-                // console.log(existrequest);
+                console.log(existrequest);
                 if(existrequest){
                     return res.status(400).json({message:"Already Friends "})
                 }
