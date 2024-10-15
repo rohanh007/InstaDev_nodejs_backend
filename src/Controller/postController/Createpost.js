@@ -6,8 +6,7 @@ function createpost() {
     async post(req, res) {
       try {
         const { title, content, location } = req.body;
-        const authorid = req.user._id; 
-
+        const authorid = req.user.id; 
         const authorexists = await User.findOne({ _id: authorid });
         if (!authorexists) {
           return res.status(400).json({ message: "User does not exist" });

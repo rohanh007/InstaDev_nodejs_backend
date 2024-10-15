@@ -16,6 +16,7 @@ const authjwt=require('../Middlewares/Authroutes')
 const getFriendPost = require('../Controller/postController/getFriendspost');
 const likePost = require('../Controller/postController/likepost');
 const unlikePost = require('../Controller/postController/unlikePost');
+const checkLiked=require('../Controller/postController/checkLiked');
 
 // auth 
 router.post('/api/loginauth',logincontroller().loginauth);
@@ -43,7 +44,11 @@ router.post('/api/friendrequest/send',sendFriendRequest().send);
 router.post('/api/friendrequest/accept',acceptFriendRequest().accept);
 router.post('/api/friendrequest/reject',rejectFriendRequest().reject);
 
+
+//api on like post 
+
 router.post('/api/like',authjwt,likePost().like);
+router.get('/api/likestatus/:postId',authjwt,checkLiked().isLiked);
 router.delete('/api/unlike',authjwt,unlikePost().unlike);
 
 module.exports = router;  
